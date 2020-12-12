@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, useCallback } from 'react';
 import './Snake.css';
 
 const Snake = (props) => {
@@ -49,6 +49,21 @@ const Snake = (props) => {
         }
         return arr
     }
+
+    //handle direction changes
+    const turn = useCallback(
+        (dir, opp) => {
+        let tempSnake = [...snake];
+        if (direction !== opp && direction !== dir) {
+            setDirection(dir)
+            tempSnake.unshift({
+                direction: dir,
+                part: []
+            })
+        }
+        setSnake(tempSnake)
+    }, [snake, direction]
+    )
 
     useEffect(() => {
         //determine relative dimensions of game portal
@@ -107,48 +122,29 @@ const Snake = (props) => {
         totalArr.filter(item => item === head).length >= 2 && setGame(true)
 
         if (!game) {//if GAMEOVER pause events
+
             //listen for directions and update snake instructions accordingly
             const handleKeydown = (e) => {
-                let tempSnake = [...snake];
+                //let tempSnake: any = [...snake];
                 switch (e.code) {
                     case 'ArrowUp':
-                        if (direction !== 'down' && direction !== 'up') {
-                            setDirection('up')
-                            tempSnake.unshift({
-                                direction: 'up',
-                                part: []
-                            })
-                        }
+                        e.preventDefault();
+                        turn('up', 'down')
                         break;
                     case 'ArrowRight':
-                        if (direction !== 'left' && direction !== 'right') {
-                            setDirection('right')
-                            tempSnake.unshift({
-                                direction: 'right',
-                                part: []
-                            })
-                        }
+                        e.preventDefault();
+                        turn('right', 'left')
                         break;
                     case 'ArrowDown':
-                        if (direction !== 'up' && direction !== 'down') {
-                            setDirection('down')
-                            tempSnake.unshift({
-                                direction: 'down',
-                                part: []
-                            })
-                        }
+                        e.preventDefault();
+                        turn('down', 'up')
                         break;
                     case 'ArrowLeft':
-                        if (direction !== 'right' && direction !== 'left') {
-                            setDirection('left')
-                            tempSnake.unshift({
-                                direction: 'left',
-                                part: []
-                            })
-                        }
+                        e.preventDefault();
+                        turn('left', 'right')
                         break;
+                    default:
                 }
-                setSnake(tempSnake)
             }
             document.addEventListener('keydown', handleKeydown)
 
@@ -220,7 +216,7 @@ const Snake = (props) => {
                 document.removeEventListener('keydown', handleKeydown)
             };
         }
-    }, [width, dim, chunk, snake, direction, points, fruit, game])
+    }, [turn, width, dim, chunk, snake, direction, points, fruit, game])
 
     return (
         <div className="snake-container" id="snake-container">
@@ -261,6 +257,31 @@ const Snake = (props) => {
                 >
                     <div style={{color: props.color2}}>Score: {points}</div>
             </div>
+            {
+                width <= 1024 && <div 
+                className="snake-mobile-buttons" 
+                style={{width: dim, margin: 'auto'}}
+                >
+                <div>
+                    <button
+                        onClick={() => turn('up', 'down')}
+                        >&#8593;</button>
+                </div>
+                <div>
+                    <button
+                        onClick={() => turn('left', 'right')}
+                        >&#8592;</button>
+                    <button
+                        onClick={() => turn('right', 'left')}
+                        >&#8594;</button>
+                </div>
+                <div>
+                    <button
+                        onClick={() => turn('down', 'up')}
+                        >&#8595;</button>
+                </div>
+            </div>
+            }
         </div>
     )
 }
