@@ -255,7 +255,7 @@ const Snake = (props) => {
                 className="point-bar"
                 style={{width: dim}}
                 >
-                    <div style={{color: props.color2}}>Score: {points}</div>
+                    <div style={{color: props.color1}}>Score: {points}</div>
             </div>
             {
                 width <= 1024 && <div 
