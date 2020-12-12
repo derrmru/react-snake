@@ -8,4 +8,3 @@ Typescript version available [here](https://github.com/derrmru/react-snake-404)
 
 - [Create React App](https://github.com/facebook/create-react-app)
 - [React](https://reactjs.org/)
-- [Typescript](https://www.typescriptlang.org/)
