@@ -1,6 +1,8 @@
 ## Snake
 
-Classic (and addictive) game - built as a reusable react component.
+A classic game, built as reusable react component. Very lightweight, easy to install and get up and running.
+
+Try the demo [here](https://thepetersweeney.com/snake/).
 
 Typescript version available [here](https://github.com/derrmru/react-snake-404).
 
@@ -8,10 +10,6 @@ Typescript version available [here](https://github.com/derrmru/react-snake-404).
 
 - [Create React App](https://github.com/facebook/create-react-app)
 - [React](https://reactjs.org/)
-
-A classic game, built as reusable react component. Very lightweight and easy to install and get up and running.
-
-Try the demo [here](https://thepetersweeney.com/snake/).
 
 ## Installation
 ```
