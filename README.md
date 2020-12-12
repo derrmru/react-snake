@@ -13,7 +13,7 @@ Typescript version available [here](https://github.com/derrmru/react-snake-404).
 
 ## Installation
 ```
-npm install react-snake-game --save
+npm i snake-game-react --save
 
 ```
 
