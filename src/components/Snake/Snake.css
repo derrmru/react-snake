@@ -15,7 +15,7 @@
 }
 
 .point-bar {
-    margin: 20px auto;
+    margin: 5px auto;
     text-align: right;
 }
 
@@ -73,8 +73,8 @@
 }
 
 .snake-mobile-buttons div button {
-    margin: 10px 100px;
-    padding: 10px 20px;
+    margin: 5px 100px;
+    padding: 8px 20px;
     border-radius: 0;
     border: 1px solid black;
 }
