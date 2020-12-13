@@ -20,23 +20,22 @@ npm i snake-game-react --save
 ## Usage
 
 ```
-import React from 'react';
-import Snake from './components/Snake/Snake';
-import './App.css';
+import Snake from 'snake-game-react';
 
-const App = () => {
+function App() {
   return (
     <div className="App">
       <Snake 
         color1="#248ec2"
         color2="#1d355e"
         backgroundColor="#ebebeb"
-        />
+        />  
     </div>
   );
 }
 
 export default App;
+
 
 ```
 ## Props
