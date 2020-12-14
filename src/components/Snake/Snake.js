@@ -54,14 +54,15 @@ const Snake = (props) => {
     const turn = useCallback(
         (dir, opp) => {
         let tempSnake = [...snake];
-        if (direction !== opp && direction !== dir) {
+        console.log(snake[0].part)
+        if (snake[0].part.length > 0 && direction !== opp && direction !== dir) {
             setDirection(dir)
             tempSnake.unshift({
                 direction: dir,
                 part: []
             })
+            setSnake(tempSnake)
         }
-        setSnake(tempSnake)
     }, [snake, direction]
     )
 

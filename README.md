@@ -14,7 +14,6 @@ Typescript version available [here](https://github.com/derrmru/react-snake-404).
 ## Installation
 ```
 npm i snake-game-react --save
-
 ```
 
 ## Usage
@@ -35,7 +34,6 @@ function App() {
 }
 
 export default App;
-
 
 ```
 ## Props
