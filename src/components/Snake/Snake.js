@@ -8,8 +8,8 @@ const Snake = (props) => {
     const [fruit, setFruit] = useState(26);
     const [points, setPoints] = useState(0);
     const [game, setGame] = useState(false);
-    const width = window.innerWidth;
     const speedRef = useRef(100);
+    let width;
     const [snake, setSnake] = useState([
         {
             direction: 'right', 
@@ -53,21 +53,22 @@ const Snake = (props) => {
     //handle direction changes
     const turn = useCallback(
         (dir, opp) => {
-        let tempSnake = [...snake];
-        console.log(snake[0].part)
-        if (snake[0].part.length > 0 && direction !== opp && direction !== dir) {
-            setDirection(dir)
-            tempSnake.unshift({
-                direction: dir,
-                part: []
-            })
-            setSnake(tempSnake)
-        }
-    }, [snake, direction]
+            let tempSnake = [...snake];
+            console.log(snake[0].part)
+            if (snake[0].part.length > 0 && direction !== opp && direction !== dir) {
+                setDirection(dir)
+                tempSnake.unshift({
+                    direction: dir,
+                    part: []
+                })
+                setSnake(tempSnake)
+            }
+        }, [snake, direction]
     )
 
     useEffect(() => {
         //determine relative dimensions of game portal
+        width = window.innerWidth;
         if (width >= 800) {
             setDim(width * .35)
         } else if (width < 800) {
